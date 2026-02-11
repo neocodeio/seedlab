@@ -1,11 +1,11 @@
 {
-    "name": "Codeown - The Home of Passionate Developers",
-    "short_name": "Codeown",
-    "description": "The premiere platform for developers to share projects and collaborate.",
+    "name": "SeedLab - From Seed to Startup",
+    "short_name": "SeedLab",
+    "description": "A launch platform for founders to showcase, grow, and validate their startups.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#f8fafc",
-    "theme_color": "#f8fafc",
+    "background_color": "#10633b",
+    "theme_color": "#10633b",
     "icons": [
         {
             "src": "/favicon.png",
