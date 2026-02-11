@@ -78,9 +78,9 @@ export default function PostCard({ post, onUpdated, isPinned }: PostCardProps) {
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
     const shareData = {
-      title: `Codeown - Post by ${post.user?.name || post.user?.username || 'User'}`,
+      title: `SeedLab - Post by ${post.user?.name || post.user?.username || 'User'}`,
       text: post.title || post.content?.substring(0, 100) || '',
-      url: `https://codeown.space/post/${post.id}`,
+      url: `https://seedlab0.vercel.app/post/${post.id}`,
     };
 
     if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
@@ -92,7 +92,7 @@ export default function PostCard({ post, onUpdated, isPinned }: PostCardProps) {
     } else {
       // Fallback: copy to clipboard
       try {
-        await navigator.clipboard.writeText(`https://codeown.space/post/${post.id}`);
+        await navigator.clipboard.writeText(`https://seedlab0.vercel.app/post/${post.id}`);
         setShareCopied(true);
         setTimeout(() => setShareCopied(false), 2000);
       } catch (err) {

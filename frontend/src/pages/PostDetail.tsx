@@ -111,9 +111,9 @@ export default function PostDetail() {
 
   const handleShare = async () => {
     if (!post) return;
-    const shareUrl = `https://codeown.space/post/${id}`;
+    const shareUrl = `https://seedlab0.vercel.app/post/${id}`;
     const shareData = {
-      title: `Codeown - Post by ${post.user?.name || 'User'}`,
+      title: `SeedLab - Post by ${post.user?.name || 'User'}`,
       text: post.title || post.content?.substring(0, 100) || '',
       url: shareUrl,
     };

@@ -235,7 +235,7 @@ export default function Profile() {
 
   return (
     <main style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
-      <SEO title="My Profile" description="Manage your Codeown profile and settings." />
+      <SEO title="My Profile" description="Manage your SeedLab profile and settings." />
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -534,8 +534,8 @@ export default function Profile() {
 
                   if (navigator.share) {
                     navigator.share({
-                      title: `${userProfile?.name || user?.fullName} on Codeown`,
-                      text: userProfile?.bio || `Check out my profile on Codeown!`,
+                      title: `${userProfile?.name || user?.fullName} on SeedLab`,
+                      text: userProfile?.bio || `Check out my profile on SeedLab!`,
                       url: shareUrl,
                     }).catch(console.error);
                   } else {

@@ -80,7 +80,7 @@ export default function Navbar() {
       {/* Logo */}
       <div style={{ padding: "24px 20px 32px 20px" }}>
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "2px", textDecoration: "none" }}>
-          <img src={logo} alt="Codeown" style={{ height: "60px", width: "auto" }} />
+          <img src={logo} alt="SeedLab" style={{ height: "60px", width: "auto" }} />
           <span style={{ fontSize: "20px", fontWeight: 800, color: "#10633b", letterSpacing: "-0.5px" }}>
             SeedLab
           </span>
@@ -279,7 +279,7 @@ export default function Navbar() {
               </div>
             </div>
             <div style={{ marginTop: "12px", fontSize: "11px", color: "#94a3b8", textAlign: "center" }}>
-              © 2026 Codeown.
+              © 2026 SeedLab.
             </div>
           </>
         ) : (
@@ -350,9 +350,9 @@ export default function Navbar() {
         boxShadow: "0 1px 3px rgba(0,0,0,0.02)"
       }}>
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-          <img src={logo} alt="Codeown" style={{ height: "32px", width: "auto" }} />
+          <img src={logo} alt="SeedLab" style={{ height: "32px", width: "auto" }} />
           <span style={{ fontSize: "18px", fontWeight: 800, color: "#1e293b", letterSpacing: "-0.5px" }}>
-            Codeown
+            SeedLab
           </span>
         </Link>
         {/* <a href="https://www.foundrlist.com/product/codeown" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center" }}>

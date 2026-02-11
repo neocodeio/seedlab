@@ -125,7 +125,7 @@ async function createWelcomeExperienceForNewUser(newUserId: string) {
 
     // Send a personal welcome message from the CEO
     const welcomeMessage =
-      "Hey, welcome to Codeown! I'm Amin, the CEO & Founder (amin.ceo). " +
+      "Hey, welcome to SeedLab! I'm Amin, the CEO & Founder (amin.ceo). " +
       "Great to have you here — if you have any questions or feedback, just reply to this message.";
 
     console.log(`[Welcome Message] Inserting welcome message into conversation ${conversationId}`);

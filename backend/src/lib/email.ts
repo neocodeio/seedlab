@@ -11,9 +11,9 @@ export async function sendWelcomeEmail(email: string, name: string) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "Codeown Team <welcome@codeown.space>",
+      from: "SeedLab Team <welcome@seedlab0.vercel.app>",
       to: email,
-      subject: "Welcome to Codeown! 🚀",
+      subject: "Welcome to SeedLab! 🚀",
       html: `
         <!DOCTYPE html>
         <html>
@@ -114,13 +114,13 @@ export async function sendWelcomeEmail(email: string, name: string) {
           <div class="container">
             <div class="card">
               <div class="header">
-                <div class="logo">Codeown</div>
+                <div class="logo">SeedLab</div>
                 <h1>Welcome aboard, ${name}! 🚀</h1>
               </div>
               
-              <p>We're absolutely thrilled to have you join Codeown. You've just joined a vibrant community of creators, developers, and innovators building the future of code.</p>
+              <p>We're absolutely thrilled to have you join SeedLab. You've just joined a vibrant community of creators, developers, and innovators building the future of code.</p>
               
-              <p>Codeown is designed to help you showcase your work, collaborate with others, and find inspiration for your next big project.</p>
+              <p>SeedLab is designed to help you showcase your work, collaborate with others, and find inspiration for your next big project.</p>
               
               <div class="feature-list">
                 <div class="feature-item">
@@ -138,17 +138,17 @@ export async function sendWelcomeEmail(email: string, name: string) {
               </div>
 
               <div class="button-container">
-                <a href="${process.env.FRONTEND_URL || 'https://codeown.space'}/profile" class="button">Check Your Profile</a>
+                <a href="${process.env.FRONTEND_URL || 'https://seedlab0.vercel.app'}/profile" class="button">Check Your Profile</a>
               </div>
               
               <div class="footer">
                 <p class="footer-text">Questions? We're here to help. Just reply to this email.</p>
                 <div class="social-links">
-                  <a href="${process.env.FRONTEND_URL || 'https://codeown.space'}/about" class="social-link">About Us</a>
-                  <a href="${process.env.FRONTEND_URL || 'https://codeown.space'}/privacy" class="social-link">Privacy Policy</a>
+                  <a href="${process.env.FRONTEND_URL || 'https://seedlab0.vercel.app'}/about" class="social-link">About Us</a>
+                  <a href="${process.env.FRONTEND_URL || 'https://seedlab0.vercel.app'}/privacy" class="social-link">Privacy Policy</a>
                 </div>
                 <p class="footer-text" style="margin-top: 20px; font-size: 12px;">
-                  &copy; ${new Date().getFullYear()} Codeown. All rights reserved.
+                  &copy; ${new Date().getFullYear()} SeedLab. All rights reserved.
                 </p>
               </div>
             </div>
@@ -173,7 +173,7 @@ export async function sendOrgRegistrationNotification(adminEmail: string, orgDat
   if (!resend) return;
   try {
     await resend.emails.send({
-      from: "Codeown System <system@codeown.space>",
+      from: "SeedLab System <system@seedlab0.vercel.app>",
       to: adminEmail,
       subject: `New Organization Registration: ${orgData.name}`,
       html: `
@@ -201,14 +201,14 @@ export async function sendOrgStatusUpdateEmail(email: string, orgName: string, s
 
   try {
     await resend.emails.send({
-      from: "Codeown <support@codeown.space>",
+      from: "SeedLab <support@seedlab0.vercel.app>",
       to: email,
       subject: subject,
       html: `
                 <div style="font-family: sans-serif; padding: 20px;">
                     <h2>Status Update: ${orgName}</h2>
                     <p>${message}</p>
-                    ${isApproved ? '<a href="https://codeown.space/search" style="padding: 10px 20px; background: #6366f1; color: white; text-decoration: none; border-radius: 5px;">Discover Developers</a>' : ''}
+                    ${isApproved ? '<a href="https://seedlab0.vercel.app/search" style="padding: 10px 20px; background: #6366f1; color: white; text-decoration: none; border-radius: 5px;">Discover Developers</a>' : ''}
                 </div>
             `
     });

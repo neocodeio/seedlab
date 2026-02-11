@@ -68,7 +68,7 @@ export default function WelcomeCard() {
                             letterSpacing: "-0.04em",
                             lineHeight: "1.2"
                         }}>
-                            Welcome to Codeown <span style={{ color: "#6366f1" }}>🚀</span>
+                            Welcome to SeedLab <span style={{ color: "#6366f1" }}>🚀</span>
                         </h2>
                         <p style={{
                             fontSize: "17px",

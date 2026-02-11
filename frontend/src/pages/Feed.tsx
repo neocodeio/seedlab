@@ -93,7 +93,7 @@ export default function Feed() {
     <main style={{ padding: 0, minHeight: "100vh", backgroundColor: "#fff" }}>
       <SEO
         title="Home"
-        description="Share your projects, discover amazing code, and connect with developers worldwide on Codeown."
+        description="Share your projects, discover amazing code, and connect with developers worldwide on SeedLab."
       />
       <div style={{ maxWidth: "600px", margin: "0 auto", backgroundColor: "#fff", borderLeft: "1px solid #eff3f4", borderRight: "1px solid #eff3f4", minHeight: "100vh" }}>
         {/* Top Tabs */}

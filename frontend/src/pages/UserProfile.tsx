@@ -271,7 +271,7 @@ export default function UserProfile() {
     <main style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
       <SEO
         title={`${user.name} (@${user.username})`}
-        description={user.bio || `Check out ${user.name}'s developer profile on Codeown.`}
+        description={user.bio || `Check out ${user.name}'s developer profile on SeedLab.`}
         image={avatarUrl}
         url={user.username ? `${window.location.origin}/${user.username}` : window.location.href}
         type="profile"
@@ -501,8 +501,8 @@ export default function UserProfile() {
 
                   if (navigator.share) {
                     navigator.share({
-                      title: `${user.name} on Codeown`,
-                      text: user.bio || `Check out ${user.name}'s profile on Codeown!`,
+                      title: `${user.name} on SeedLab`,
+                      text: user.bio || `Check out ${user.name}'s profile on SeedLab!`,
                       url: shareUrl,
                     }).catch(console.error);
                   } else {

@@ -136,7 +136,7 @@ export default function FeedbackButton() {
               <FontAwesomeIcon icon={faComment} style={{ fontSize: "24px" }} />
             </div>
             <h3 style={{ margin: "0 0 8px", color: "#1e293b", fontSize: "18px" }}>Thank You!</h3>
-            <p style={{ margin: 0, color: "#64748b", lineHeight: "1.5" }}>Your feedback helps us improve Codeown.</p>
+            <p style={{ margin: 0, color: "#64748b", lineHeight: "1.5" }}>Your feedback helps us improve SeedLab.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>

@@ -107,7 +107,7 @@ export default function Search() {
       try {
         // Save to history if query is significant
         if (query.trim().length >= 2) {
-          const savedHistory = localStorage.getItem("codeown_search_history");
+          const savedHistory = localStorage.getItem("seedlab_search_history");
           let currentHistory: string[] = [];
           if (savedHistory) {
             try {
@@ -118,7 +118,7 @@ export default function Search() {
           }
           const newHistory = [query.trim(), ...currentHistory.filter((item) => item !== query.trim())].slice(0, 6);
           setHistory(newHistory);
-          localStorage.setItem("codeown_search_history", JSON.stringify(newHistory));
+          localStorage.setItem("seedlab_search_history", JSON.stringify(newHistory));
         }
 
         // Re-use logic for search type
@@ -174,7 +174,7 @@ export default function Search() {
         .catch(console.error);
     }
 
-    const savedHistory = localStorage.getItem("codeown_search_history");
+    const savedHistory = localStorage.getItem("seedlab_search_history");
     if (savedHistory) {
       try {
         setHistory(JSON.parse(savedHistory));
@@ -195,7 +195,7 @@ export default function Search() {
     e.stopPropagation();
     const newHistory = history.filter((item) => item !== q);
     setHistory(newHistory);
-    localStorage.setItem("codeown_search_history", JSON.stringify(newHistory));
+    localStorage.setItem("seedlab_search_history", JSON.stringify(newHistory));
   };
 
   const handleHistoryClick = (q: string) => {
@@ -415,7 +415,7 @@ export default function Search() {
             ) : (
               <div style={{ textAlign: "center", padding: "80px 40px", color: "#94a3b8" }}>
                 <FontAwesomeIcon icon={faSearch} style={{ fontSize: "48px", opacity: 0.1, marginBottom: "20px" }} />
-                <div style={{ fontSize: "18px", fontWeight: 700, color: "#64748b", marginBottom: "8px" }}>Search Codeown</div>
+                <div style={{ fontSize: "18px", fontWeight: 700, color: "#64748b", marginBottom: "8px" }}>Search SeedLab</div>
                 <p style={{ margin: 0, fontSize: "14px" }}>Find people, posts, and projects from the community</p>
               </div>
             )}

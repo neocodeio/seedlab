@@ -11,7 +11,7 @@ export default function SearchBar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedHistory = localStorage.getItem("codeown_search_history");
+    const savedHistory = localStorage.getItem("seedlab_search_history");
     if (savedHistory) {
       try {
         setHistory(JSON.parse(savedHistory));
@@ -25,14 +25,14 @@ export default function SearchBar() {
     if (!q || q.trim().length < 2) return;
     const newHistory = [q.trim(), ...history.filter((item) => item !== q.trim())].slice(0, 6);
     setHistory(newHistory);
-    localStorage.setItem("codeown_search_history", JSON.stringify(newHistory));
+    localStorage.setItem("seedlab_search_history", JSON.stringify(newHistory));
   };
 
   const removeFromHistory = (e: React.MouseEvent, q: string) => {
     e.stopPropagation();
     const newHistory = history.filter((item) => item !== q);
     setHistory(newHistory);
-    localStorage.setItem("codeown_search_history", JSON.stringify(newHistory));
+    localStorage.setItem("seedlab_search_history", JSON.stringify(newHistory));
   };
 
   useEffect(() => {

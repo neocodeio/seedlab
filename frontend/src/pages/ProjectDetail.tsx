@@ -225,9 +225,9 @@ export default function ProjectDetail() {
 
   const handleShare = async () => {
     if (!project) return;
-    const shareUrl = `https://codeown.space/project/${id}`;
+    const shareUrl = `https://seedlab0.vercel.app/project/${id}`;
     const shareData = {
-      title: `Codeown Project - ${project.title}`,
+      title: `SeedLab Project - ${project.title}`,
       text: project.description?.substring(0, 100) || '',
       url: shareUrl,
     };
@@ -278,7 +278,7 @@ export default function ProjectDetail() {
     <main className="container" style={{ padding: "60px 20px" }}>
       <SEO
         title={`${project.title} by ${userName}`}
-        description={project.description || `Check out ${project.title} on Codeown.`}
+        description={project.description || `Check out ${project.title} on SeedLab.`}
         image={project.cover_image || avatarUrl}
         url={window.location.href}
         type="article"

@@ -19,7 +19,7 @@ export const SEO = ({
     author,
     publishedTime
 }: SEOProps) => {
-    const siteTitle = 'Codeown';
+    const siteTitle = 'SeedLab';
     const fullTitle = `${title} | ${siteTitle}`;
     const fullImage = image.startsWith('http') ? image : `${window.location.origin}${image}`;
 

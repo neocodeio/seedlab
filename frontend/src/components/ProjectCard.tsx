@@ -120,9 +120,9 @@ export default function ProjectCard({ project, onUpdated }: ProjectCardProps) {
 
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    const shareUrl = `https://codeown.space/project/${project.id}`;
+    const shareUrl = `https://seedlab0.vercel.app/project/${project.id}`;
     const shareData = {
-      title: `Codeown Project - ${project.title}`,
+      title: `SeedLab Project - ${project.title}`,
       text: project.description?.substring(0, 100) || '',
       url: shareUrl,
     };

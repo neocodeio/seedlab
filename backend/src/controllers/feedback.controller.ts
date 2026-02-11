@@ -37,10 +37,10 @@ export async function submitFeedback(req: Request, res: Response) {
     // Send email using Resend
     console.log("Sending feedback email via Resend...");
     const { data, error } = await resend.emails.send({
-      from: `${fullName} <feedback@codeown.space>`, // Shows sender name in inbox
+      from: `${fullName} <feedback@seedlab0.vercel.app>`, // Shows sender name in inbox
       to: FEEDBACK_TO,
-      subject: `[Codeown Feedback] ${fullName} (${email})`,
-      text: `Feedback from Codeown
+      subject: `[SeedLab Feedback] ${fullName} (${email})`,
+      text: `Feedback from SeedLab
 
 Full name: ${fullName}
 Email: ${email}

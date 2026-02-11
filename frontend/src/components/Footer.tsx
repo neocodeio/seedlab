@@ -12,8 +12,8 @@ export default function Footer() {
         }}>
             {/* Product Hunt Badge */}
             <div style={{
-                display: "flex", 
-                justifyContent: "center", 
+                display: "flex",
+                justifyContent: "center",
                 alignItems: "center"
             }}>
                 <a
@@ -47,7 +47,7 @@ export default function Footer() {
                 fontSize: "14px"
             }}>
                 <p style={{ margin: "0 0 8px 0" }}>
-                    © {new Date().getFullYear()} Codeown. All rights reserved.
+                    © {new Date().getFullYear()} SeedLab. All rights reserved.
                 </p>
                 <div style={{
                     display: "flex",

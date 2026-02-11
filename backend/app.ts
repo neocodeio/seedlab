@@ -25,7 +25,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5174",
-    "https://codeown.space"
+    "https://seedlab0.vercel.app"
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
