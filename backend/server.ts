@@ -1,7 +1,7 @@
 import "dotenv/config";
 import app from "./app.js";
 
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.get("/", (req, res) => {
   res.send("Backend is running");

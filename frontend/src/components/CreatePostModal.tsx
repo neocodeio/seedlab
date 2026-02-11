@@ -622,7 +622,7 @@ export default function CreatePostModal({ isOpen, onClose, onCreated }: CreatePo
                 disabled={isSubmitting}
                 style={{
                   padding: "8px 16px",
-                  backgroundColor: "#212121",
+                  backgroundColor: "#10633b",
                   border: "none",
                   color: "#ffffff",
                   borderRadius: "20px",
@@ -639,7 +639,7 @@ export default function CreatePostModal({ isOpen, onClose, onCreated }: CreatePo
                 }}
                 onMouseLeave={(e) => {
                   if (!isSubmitting) {
-                    e.currentTarget.style.backgroundColor = "#212121";
+                    e.currentTarget.style.backgroundColor = "#10633b";
                   }
                 }}
               >
@@ -651,7 +651,7 @@ export default function CreatePostModal({ isOpen, onClose, onCreated }: CreatePo
                 disabled={!isLoaded || !title.trim() || !content.trim() || isSubmitting}
                 style={{
                   padding: "8px 16px",
-                  backgroundColor: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#212121" : "#e4e7eb",
+                  backgroundColor: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#10633b" : "#e4e7eb",
                   border: "none",
                   color: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#ffffff" : "#94a3b8",
                   borderRadius: "20px",
@@ -667,7 +667,7 @@ export default function CreatePostModal({ isOpen, onClose, onCreated }: CreatePo
                 }}
                 onMouseLeave={(e) => {
                   if (isLoaded && title.trim() && content.trim() && !isSubmitting) {
-                    e.currentTarget.style.backgroundColor = "#212121";
+                    e.currentTarget.style.backgroundColor = "#10633b";
                   }
                 }}
               >

@@ -377,7 +377,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
                   onClick={handleAddTech}
                   style={{
                     padding: "12px 20px",
-                    backgroundColor: "#212121",
+                    backgroundColor: "#10633b",
                     color: "#fff",
                     border: "none",
                     borderRadius: "8px",
@@ -450,7 +450,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
                   onClick={handleAddContributor}
                   style={{
                     padding: "12px 20px",
-                    backgroundColor: "#212121",
+                    backgroundColor: "#10633b",
                     color: "#fff",
                     border: "none",
                     borderRadius: "8px",
@@ -662,7 +662,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
             disabled={loading}
             style={{
               padding: "12px 24px",
-              backgroundColor: loading ? "#444" : "#212121",
+              backgroundColor: loading ? "#0d4a2d" : "#10633b",
               color: "#fff",
               border: "none",
               borderRadius: "14px",

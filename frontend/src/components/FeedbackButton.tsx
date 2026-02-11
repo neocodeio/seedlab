@@ -155,7 +155,7 @@ export default function FeedbackButton() {
                   backgroundColor: "#f8fafc",
                   color: "#1e293b",
                   fontSize: "14px",
-                  outline: "none", 
+                  outline: "none",
                   transition: "border-color 0.2s",
                   boxSizing: "border-box"
                 }}
@@ -259,7 +259,7 @@ export default function FeedbackButton() {
               style={{
                 width: "100%",
                 padding: "14px",
-                backgroundColor: "#212121",
+                backgroundColor: "#10633b",
                 color: "#fff",
                 border: "none",
                 borderRadius: "12px",
@@ -308,7 +308,7 @@ export default function FeedbackButton() {
         }}
         aria-label="Feedback"
       >
-        <HugeiconsIcon icon={CommentAdd02Icon} style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", backgroundColor: "#212121", padding: "12px", borderRadius: "25px" }} />
+        <HugeiconsIcon icon={CommentAdd02Icon} style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", backgroundColor: "#10633b", padding: "12px", borderRadius: "25px" }} />
       </button>
       {modal}
     </>

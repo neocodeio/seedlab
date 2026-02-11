@@ -282,7 +282,7 @@ export default function Search() {
                   display: "flex",
                   alignItems: "center",
                   gap: "6px",
-                  backgroundColor: "#212121",
+                  backgroundColor: "#10633b",
                   color: "#fff",
                   border: "none",
                   borderRadius: "24px",
@@ -475,7 +475,7 @@ export default function Search() {
                     <button
                       onClick={(e) => handleFollow(e, user.id)}
                       style={{
-                        backgroundColor: currentUserFollowing.includes(user.id) ? "#f1f5f9" : "#212121",
+                        backgroundColor: currentUserFollowing.includes(user.id) ? "#f1f5f9" : "#10633b",
                         color: currentUserFollowing.includes(user.id) ? "#475569" : "#fff",
                         border: "none",
                         borderRadius: "20px",

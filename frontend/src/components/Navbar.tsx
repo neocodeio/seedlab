@@ -24,7 +24,7 @@ import {
   // faPlus,
   // faBell
 } from '@hugeicons/core-free-icons';
-import logo from "../assets/logo.png";
+import logo from "../assets/icon-removebg.png";
 import VerifiedBadge from "./VerifiedBadge";
 
 export default function Navbar() {
@@ -67,7 +67,7 @@ export default function Navbar() {
     padding: "12px 16px",
     borderRadius: "12px",
     textDecoration: "none",
-    color: location.pathname === path ? "#212121" : "#212121",
+    color: location.pathname === path ? "#10633b" : "#10633b",
     backgroundColor: location.pathname === path ? "#f0f0f0" : "transparent",
     fontWeight: location.pathname === path ? 700 : 500,
     fontSize: "16px",
@@ -79,10 +79,10 @@ export default function Navbar() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", width: "100%" }}>
       {/* Logo */}
       <div style={{ padding: "24px 20px 32px 20px" }}>
-        <Link to="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
-          <img src={logo} alt="Codeown" style={{ height: "40px", width: "auto" }} />
-          <span style={{ fontSize: "20px", fontWeight: 800, color: "#1e293b", letterSpacing: "-0.5px" }}>
-            Codeown
+        <Link to="/" style={{ display: "flex", alignItems: "center", gap: "2px", textDecoration: "none" }}>
+          <img src={logo} alt="Codeown" style={{ height: "60px", width: "auto" }} />
+          <span style={{ fontSize: "20px", fontWeight: 800, color: "#10633b", letterSpacing: "-0.5px" }}>
+            SeedLab
           </span>
         </Link>
       </div>
@@ -287,7 +287,7 @@ export default function Navbar() {
             <button style={{
               width: "100%",
               padding: "12px",
-              backgroundColor: "#212121",
+              backgroundColor: "#10633b",
               color: "#fff",
               border: "none",
               borderRadius: "12px",

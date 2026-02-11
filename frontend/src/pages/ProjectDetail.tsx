@@ -375,7 +375,7 @@ export default function ProjectDetail() {
                 <div style={{
                   width: "48px",
                   height: "48px",
-                  backgroundColor: "#212121",
+                  backgroundColor: "#10633b",
                   border: "1px solid var(--border-color)",
                   overflow: "hidden",
                   borderRadius: "50%",
@@ -526,7 +526,7 @@ export default function ProjectDetail() {
                     alignItems: "center",
                     gap: "8px",
                     padding: "12px 20px",
-                    backgroundColor: "#212121",
+                    backgroundColor: "#10633b",
                     color: "#fff",
                     borderRadius: "8px",
                     textDecoration: "none",
@@ -538,7 +538,7 @@ export default function ProjectDetail() {
                     e.currentTarget.style.backgroundColor = "#444";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#212121";
+                    e.currentTarget.style.backgroundColor = "#10633b";
                   }}
                 >
                   <FontAwesomeIcon icon={faGithubBrand} />
@@ -584,7 +584,7 @@ export default function ProjectDetail() {
                   onClick={handleEditClick}
                   style={{
                     padding: "12px 20px",
-                    backgroundColor: "#212121",
+                    backgroundColor: "#10633b",
                     color: "#fff",
                     border: "none",
                     borderRadius: "8px",
@@ -658,7 +658,7 @@ export default function ProjectDetail() {
               padding: "16px",
               border: "none",
               borderRadius: "8px",
-              backgroundColor: isSaved ? "#212121" : "#fff",
+              backgroundColor: isSaved ? "#10633b" : "#fff",
               color: isSaved ? "#fff" : "var(--text-primary)",
               cursor: currentUser ? "pointer" : "not-allowed",
               fontWeight: 600,

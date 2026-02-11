@@ -116,7 +116,7 @@ export default function NotificationDropdown(props: NotificationDropdownProps) {
                   position: "absolute",
                   top: "-8px",
                   right: "-8px",
-                  backgroundColor: "#212121",
+                  backgroundColor: "#10633b",
                   color: "#fff",
                   borderRadius: "50%",
                   width: "18px",
@@ -208,7 +208,7 @@ export default function NotificationDropdown(props: NotificationDropdownProps) {
                       width: "18px",
                       height: "18px",
                       borderRadius: "50%",
-                      backgroundColor: "#212121",
+                      backgroundColor: "#10633b",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -228,7 +228,7 @@ export default function NotificationDropdown(props: NotificationDropdownProps) {
                     </p>
                   </div>
                   {!notification.read && (
-                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#212121", marginTop: "6px" }} />
+                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10633b", marginTop: "6px" }} />
                   )}
                 </div>
               ))

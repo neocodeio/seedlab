@@ -64,7 +64,7 @@ export default function NotFound() {
                         borderRadius: "16px",
                         fontSize: "15px",
                         fontWeight: 800,
-                        backgroundColor: "#212121",
+                        backgroundColor: "#10633b",
                         color: "white",
                         border: "none",
                         margin: "0 auto",

@@ -124,7 +124,7 @@ export default function Feed() {
           >
             For You
             {feedFilter === "all" && (
-              <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "56px", height: "4px", backgroundColor: "#212121", borderRadius: "0px" }} />
+              <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "56px", height: "4px", backgroundColor: "#10633b", borderRadius: "0px" }} />
             )}
           </div>
           <div
@@ -145,7 +145,7 @@ export default function Feed() {
           >
             Following
             {feedFilter === "following" && (
-              <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "70px", height: "4px", backgroundColor: "#212121", borderRadius: "0px" }} />
+              <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "70px", height: "4px", backgroundColor: "#10633b", borderRadius: "0px" }} />
             )}
           </div>
         </div>

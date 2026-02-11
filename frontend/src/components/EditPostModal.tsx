@@ -428,7 +428,7 @@ export default function EditPostModal({ isOpen, onClose, onUpdated, post }: Edit
                 disabled={isSubmitting}
                 style={{
                   padding: "8px 16px",
-                  backgroundColor: "#212121",
+                  backgroundColor: "#10633b",
                   border: "none",
                   color: "#ffffff",
                   borderRadius: "20px",
@@ -447,7 +447,7 @@ export default function EditPostModal({ isOpen, onClose, onUpdated, post }: Edit
                 disabled={!isLoaded || !title.trim() || !content.trim() || isSubmitting}
                 style={{
                   padding: "8px 16px",
-                  backgroundColor: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#212121" : "#e4e7eb",
+                  backgroundColor: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#10633b" : "#e4e7eb",
                   border: "none",
                   color: isLoaded && title.trim() && content.trim() && !isSubmitting ? "#ffffff" : "#94a3b8",
                   borderRadius: "20px",

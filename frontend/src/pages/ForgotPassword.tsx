@@ -233,7 +233,7 @@ export default function ForgotPassword() {
                             borderRadius: "12px",
                             fontSize: "14px",
                             fontWeight: 700,
-                            backgroundColor: "#212121",
+                            backgroundColor: "#10633b",
                             color: "white",
                             border: "none",
                             marginTop: "12px",
