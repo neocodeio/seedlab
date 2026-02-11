@@ -237,12 +237,12 @@ export default function PostCard({ post, onUpdated, isPinned }: PostCardProps) {
           </div>
 
           {/* Title - Optional in X style but we keep it */}
-          {post.title && post.title !== post.content && (
+          {post.title && post.title !== '<<<NO_TITLE>>>' && post.title !== post.content && (
             <h2 dir="auto" style={{
-              fontSize: "15px",
+              fontSize: "17px",
               fontWeight: "800",
               color: "#0f172a",
-              margin: "0 0 4px 0",
+              margin: "0 0 6px 0",
               lineHeight: "1.4"
             }}>
               {post.title}

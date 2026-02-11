@@ -117,7 +117,7 @@ export async function getPosts(req: Request, res: Response) {
             const userData: any = {
               name: userName,
               avatar_url: clerkUser.imageUrl || null,
-            username: clerkUser.username || null,
+              username: clerkUser.username || null,
             };
 
             console.log(`Setting user data for ${userId}:`, userData);
@@ -404,7 +404,7 @@ export async function getPostsByUser(req: Request, res: Response) {
           id: userId,
           name: userName,
           avatar_url: clerkUser.imageUrl || null,
-            username: clerkUser.username || null,
+          username: clerkUser.username || null,
         };
 
         // Sync user to Supabase for future requests
@@ -556,13 +556,18 @@ export async function createPost(req: Request, res: Response) {
       }
     }
 
+    // Ensure user exists in Supabase (creates if doesn't exist)
+    // CRITICAL: This must succeed before we can create a post due to foreign key constraints
     try {
       const syncedUser = await ensureUserExists(userId as string, userDataForSync);
       console.log("User synced to Supabase:", syncedUser?.id || userId);
     } catch (error: any) {
       console.error("Error ensuring user exists:", error?.message || error);
       console.error("Full error:", error);
-      // Continue anyway - user might already exist, or we'll fetch from Clerk when displaying posts
+      return res.status(500).json({
+        error: "Failed to synchronize user profile",
+        details: "Could not ensure user exists in database. Please try again."
+      });
     }
 
     // Validate and sanitize language

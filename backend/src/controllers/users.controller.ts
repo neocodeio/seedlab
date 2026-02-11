@@ -233,11 +233,40 @@ export async function ensureUserExists(userId: string, userData?: any) {
       email: email,
       name: name,
       avatar_url: data?.avatar_url || data?.image_url || null,
-      username: data?.username || name || null, // Use name as fallback for username
+      username: data?.username || (name ? name.replace(/\s+/g, "").toLowerCase() : null) || null, // remove spaces from name for username
     };
   };
 
   const userInfo = userData ? getUserInfo(userData) : { email: null, name: "User", avatar_url: null, username: null };
+
+  // Ensure username is not null and unique
+  let finalUsername = userInfo.username;
+  if (!finalUsername) {
+    finalUsername = `user_${userId.substring(0, 8)}`;
+  }
+
+  // Sanitize username
+  finalUsername = finalUsername.replace(/[^a-zA-Z0-9_.-]/g, "").toLowerCase();
+
+  if (!finalUsername) {
+    finalUsername = `user_${userId.substring(0, 8)}`;
+  }
+
+  // Check if username is taken by another user
+  const { data: existingUsernameUser } = await supabase
+    .from("users")
+    .select("id")
+    .eq("username", finalUsername)
+    .neq("id", userId) // exclude self
+    .maybeSingle();
+
+  if (existingUsernameUser) {
+    // Username taken, append random suffix
+    finalUsername = `${finalUsername}_${Math.floor(Math.random() * 10000)}`;
+  }
+
+  // Update userInfo with final username
+  userInfo.username = finalUsername;
 
   console.log("User info extracted:", userInfo);
 
@@ -261,7 +290,7 @@ export async function ensureUserExists(userId: string, userData?: any) {
           email: userInfo.email,
           name: userInfo.name,
           avatar_url: userInfo.avatar_url,
-          username: userInfo.username,
+          username: userInfo.username, // This now contains the sanitized/unique username
           updated_at: new Date().toISOString(),
         })
         .eq("id", userId);
@@ -285,11 +314,11 @@ export async function ensureUserExists(userId: string, userData?: any) {
       name: userInfo.name,
       avatar_url: userInfo.avatar_url,
       username: userInfo.username,
-      onboarding_completed: false,
+      // onboarding_completed: false, // Column may be missing in unclear schemas
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
-    .select()
+    .select('id, username')
     .single();
 
   if (error) {
@@ -620,7 +649,7 @@ export async function updateUserProfile(req: Request, res: Response) {
     if (is_hirable !== undefined) updateData.is_hirable = is_hirable;
     if (experience_level !== undefined) updateData.experience_level = experience_level;
     if (is_organization !== undefined) updateData.is_organization = is_organization;
-    if (onboarding_completed !== undefined) updateData.onboarding_completed = onboarding_completed;
+    // if (onboarding_completed !== undefined) updateData.onboarding_completed = onboarding_completed;
     if (github_url !== undefined) updateData.github_url = github_url;
     if (twitter_url !== undefined) updateData.twitter_url = twitter_url;
     if (linkedin_url !== undefined) updateData.linkedin_url = linkedin_url;

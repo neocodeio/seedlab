@@ -68,4 +68,5 @@ app.use("/projects", projectsRoutes);
 app.use("/messages", messagesRoutes);
 app.use("/", projectCommentsRoutes);
 
+console.log("App initialized - v2");
 export default app;

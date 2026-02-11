@@ -162,9 +162,9 @@ export default function Feed() {
             onClick={() => updateParams({ type: "posts" })}
             style={{
               padding: "6px 14px",
-              borderRadius: "100px",
+              borderRadius: "12px",
               border: "1px solid #eff3f4",
-              backgroundColor: feedType === "posts" ? "#0f172a" : "#fff",
+              backgroundColor: feedType === "posts" ? "#10633b" : "#fff",
               color: feedType === "posts" ? "#fff" : "#64748b",
               fontSize: "13px",
               fontWeight: 700,
@@ -178,9 +178,9 @@ export default function Feed() {
             onClick={() => updateParams({ type: "projects" })}
             style={{
               padding: "6px 14px",
-              borderRadius: "100px",
+              borderRadius: "12px",
               border: "1px solid #eff3f4",
-              backgroundColor: feedType === "projects" ? "#0f172a" : "#fff",
+              backgroundColor: feedType === "projects" ? "#10633b" : "#fff",
               color: feedType === "projects" ? "#fff" : "#64748b",
               fontSize: "13px",
               fontWeight: 700,
@@ -188,7 +188,7 @@ export default function Feed() {
               transition: "all 0.2s"
             }}
           >
-            Projects
+            Products
           </button>
         </div>
 
@@ -220,7 +220,7 @@ export default function Feed() {
                     onClick={() => handleFilterChange("all")}
                     style={{
                       padding: "12px 24px",
-                      backgroundColor: "#0f172a",
+                      backgroundColor: "#10633b",
                       color: "#fff",
                       border: "none",
                       borderRadius: "100px",

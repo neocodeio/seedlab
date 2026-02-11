@@ -113,7 +113,7 @@ export default function Navbar() {
                   style={{
                     ...linkStyle(""),
                     cursor: "pointer",
-                    color: isOpen ? "#212121" : "#212121",
+                    color: isOpen ? "#10633b" : "#10633b",
                     backgroundColor: isOpen ? "#f0f0f0" : "transparent",
                   }}
                   onMouseEnter={(e) => {
@@ -153,7 +153,7 @@ export default function Navbar() {
 
             <div
               onClick={() => setIsModalOpen(true)}
-              style={{ ...linkStyle(""), cursor: "pointer", color: "#212121" }}
+              style={{ ...linkStyle(""), cursor: "pointer", color: "#10633b" }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#f8fafc"}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
             >
@@ -163,7 +163,7 @@ export default function Navbar() {
 
             <div
               onClick={() => setIsProjectModalOpen(true)}
-              style={{ ...linkStyle(""), cursor: "pointer", color: "#212121" }}
+              style={{ ...linkStyle(""), cursor: "pointer", color: "#10633b" }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#f8fafc"}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
             >

@@ -71,11 +71,8 @@ export default function FeedPostComposer({ onCreated }: FeedPostComposerProps) {
             const token = await getToken();
             if (!token) throw new Error("No token");
 
-            const firstLine = content.split('\n')[0];
-            const title = firstLine.length > 50 ? firstLine.substring(0, 47) + "..." : firstLine || "New Post";
-
             await api.post("/posts", {
-                title: title,
+                title: "<<<NO_TITLE>>>", // Sentinel value for hidden title
                 content: content.trim(),
                 images: images.length > 0 ? images : null,
                 language: "en"
@@ -212,7 +209,7 @@ export default function FeedPostComposer({ onCreated }: FeedPostComposerProps) {
                             disabled={(!content.trim() && images.length === 0) || isSubmitting || content.length > charLimit}
                             style={{
                                 padding: "8px 20px",
-                                backgroundColor: (content.trim() || images.length > 0) && !isSubmitting && content.length <= charLimit ? "#0f172a" : "#cbd5e1",
+                                backgroundColor: (content.trim() || images.length > 0) && !isSubmitting && content.length <= charLimit ? "#10633b" : "#cbd5e1",
                                 color: "#fff",
                                 border: "none",
                                 borderRadius: "100px",
