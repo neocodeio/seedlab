@@ -168,7 +168,7 @@ export default function Navbar() {
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
             >
               <HugeiconsIcon icon={Rocket01Icon} style={{ width: "20px" }} />
-              Launch Project
+              Launch Product
             </div>
 
             <Link to="/profile" style={linkStyle("/profile")}>
@@ -456,7 +456,7 @@ export default function Navbar() {
                 <div style={{ width: "32px", height: "32px", borderRadius: "8px", background: "#f0f0f0", color: "#212121", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <HugeiconsIcon icon={Rocket01Icon} />
                 </div>
-                Launch Project
+                Launch Product
               </div>
             </div>
           )}

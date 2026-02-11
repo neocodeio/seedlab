@@ -106,7 +106,7 @@ export default function FeedbackButton() {
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
-          <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 800, color: "#1e293b" }}>Feedback</h2>
+          <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 800, color: "#1e293b" }}>Feedback (Working Soon)</h2>
           <button
             type="button"
             onClick={handleClose}

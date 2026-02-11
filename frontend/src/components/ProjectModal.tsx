@@ -292,7 +292,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <h2 className="modal-header-title" style={{ margin: 0, fontSize: "24px", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.025em" }}>
-            {project ? "Edit Project" : "Add New Project"}
+            {project ? "Edit Project" : "Add New Product"}
           </h2>
         </div>
 
@@ -316,7 +316,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
           <form id="project-form" onSubmit={handleSubmit}>
             <div style={{ marginBottom: "20px" }}>
               <label className="form-item-label" style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
-                Project Name *
+                Product Name *
               </label>
               <input
                 type="text"
@@ -336,7 +336,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
 
             <div style={{ marginBottom: "20px" }}>
               <label className="form-item-label" style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
-                Project Description *
+                Product Description *
               </label>
               <textarea
                 name="description"
@@ -350,7 +350,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
                   fontSize: "13px",
                 }}
                 className="form-textarea"
-                placeholder="A short punchy intro for your project..."
+                placeholder="A short punchy intro for your Product..."
               />
             </div>
 
@@ -502,7 +502,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
               </div>
             </div>
 
-            <div style={{ marginBottom: "20px" }}>
+            {/* <div style={{ marginBottom: "20px" }}>
               <label className="form-item-label" style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
                 Project Status *
               </label>
@@ -523,9 +523,9 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
                 <option value="paused">Paused</option>
               </select>
 
-            </div>
+            </div> */}
 
-            <div style={{ marginBottom: "20px" }}>
+            {/* <div style={{ marginBottom: "20px" }}>
               <label style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}>
                 <input
                   type="checkbox"
@@ -539,7 +539,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
               <p style={{ fontSize: "14px", color: "var(--text-tertiary)", marginTop: "4px", marginLeft: "30px" }}>
                 Check this if you want to invite others to help with your project.
               </p>
-            </div>
+            </div> */}
 
             <div className="responsive-grid">
               <div>
@@ -615,7 +615,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
 
             <div style={{ marginBottom: "30px" }}>
               <label className="form-item-label" style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>
-                Project Details *
+                Product Details *
               </label>
               <textarea
                 name="project_details"
@@ -629,7 +629,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
                   borderRadius: "10px",
                   fontSize: "13px",
                 }}
-                placeholder="Describe your project in detail..."
+                placeholder="Describe your product in detail..."
               />
             </div>
           </form>
@@ -672,7 +672,7 @@ export default function ProjectModal({ isOpen, onClose, onUpdated, project }: Pr
               transition: "all 0.2s ease"
             }}
           >
-            {loading ? "Saving..." : (project ? "Update Project" : "Create Project")}
+            {loading ? "Saving..." : (project ? "Update Product" : "Create Product")}
           </button>
         </div>
       </div>
