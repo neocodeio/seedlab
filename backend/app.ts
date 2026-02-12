@@ -24,7 +24,8 @@ const app = express();
 // 1. CORS - MUST BE FIRST for preflight requests
 app.use(cors({
   origin: [
-    "*",
+    "https://localhost:5174",
+    "https://seedlab0.vercel.app"
   ],
   // credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
