@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Allow access from network (for mobile testing)
-    port: 5173,
+    port: 5174,
   },
 })

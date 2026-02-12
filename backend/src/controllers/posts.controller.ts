@@ -12,7 +12,7 @@ export async function getPosts(req: Request, res: Response) {
     const limitNum = parseInt(limit as string, 10) || 20;
     const offset = (pageNum - 1) * limitNum;
 
-    let postsQuery = supabase.from("posts").select("*", { count: "exact" }).order("created_at", { ascending: false });
+    let postsQuery = supabase.from("posts").select("id, title, content, user_id, created_at, images, tags, like_count, comment_count, view_count, language", { count: "exact" }).order("created_at", { ascending: false });
 
     if (lang && typeof lang === 'string' && lang.trim().length > 0) {
       const languageCode = lang.toLowerCase().trim();
@@ -52,20 +52,41 @@ export async function getPosts(req: Request, res: Response) {
 
     // Get unique user IDs
     const userIds = [...new Set(posts.map((p: any) => p.user_id))];
+    const currentUserId = (req as any).user?.sub || (req as any).user?.id || (req as any).user?.userId;
 
-    // Fetch users
-    const { data: users, error: usersError } = await supabase
+    // PARALLEL FETCHING: Users and Stats
+    const usersPromise = supabase
       .from("users")
       .select("id, name, avatar_url, username")
       .in("id", userIds);
 
-    console.log(`Fetched ${users?.length || 0} users from Supabase for ${userIds.length} user IDs`);
-    console.log(`User IDs requested:`, userIds);
-    console.log(`Users found in Supabase:`, users?.map((u: any) => u.id) || []);
+    let statsPromise = Promise.resolve([null, null] as any[]);
+    if (currentUserId) {
+      const postIds = posts.map((p: any) => p.id);
+      if (postIds.length > 0) {
+        statsPromise = Promise.all([
+          supabase.from("likes").select("post_id").eq("user_id", currentUserId).in("post_id", postIds),
+          supabase.from("saved_posts").select("post_id").eq("user_id", currentUserId).in("post_id", postIds)
+        ]);
+      }
+    }
+
+    const [{ data: users, error: usersError }, statsResults] = await Promise.all([
+      usersPromise,
+      statsPromise
+    ]);
 
     if (usersError) {
       console.error("Supabase error fetching users:", usersError);
-      // Continue without user data if users fetch fails
+    }
+
+    // Process Stats Results
+    let likedPostIds = new Set();
+    let savedPostIds = new Set();
+    if (statsResults[0] && statsResults[1]) {
+      const [likesRes, savesRes] = statsResults;
+      likedPostIds = new Set((likesRes?.data || []).map((l: any) => l.post_id));
+      savedPostIds = new Set((savesRes?.data || []).map((s: any) => s.post_id));
     }
 
     // Create a map of user_id to user data from Supabase
@@ -77,22 +98,19 @@ export async function getPosts(req: Request, res: Response) {
     // Fetch missing users from Clerk as fallback
     const clerkUserMap = new Map();
     if (missingUserIds.length > 0 && process.env.CLERK_SECRET_KEY) {
+      // ... (Clerk fetching logic remains similar but ensures parallelism is maintained if possible)
+      // Since wrapping the whole block is messy, I'll keep the Clerk logic here but verify it uses Promise.all internally which the original code did.
+      // Yes, original code used Promise.all(clerkUserPromises).
+
       console.log(`Fetching ${missingUserIds.length} missing users from Clerk:`, missingUserIds);
       try {
-        // Fetch users in parallel for better performance
         const clerkUserPromises = missingUserIds.map(async (userId: string) => {
           try {
-            console.log(`Fetching Clerk user: ${userId}`);
+            // Basic implementation to avoid copying 100 lines of logic if I can avoid it
+            // Actually, I must copy the valid logic to ensure it works.
+            // I'll condense the repeated logging for brevity in this replacement, or keep it.
             const clerkUser = await clerkClient.users.getUser(userId);
-            console.log(`Clerk user data for ${userId}:`, {
-              firstName: clerkUser.firstName,
-              lastName: clerkUser.lastName,
-              username: clerkUser.username,
-              email: clerkUser.emailAddresses?.[0]?.emailAddress,
-              imageUrl: clerkUser.imageUrl,
-            });
 
-            // Get username - try multiple fields
             let userName: string | null = null;
             if (clerkUser.firstName && clerkUser.lastName) {
               userName = `${clerkUser.firstName} ${clerkUser.lastName}`.trim();
@@ -103,111 +121,51 @@ export async function getPosts(req: Request, res: Response) {
             } else if (clerkUser.username) {
               userName = clerkUser.username;
             } else if (clerkUser.emailAddresses && clerkUser.emailAddresses.length > 0) {
-              const emailAddress = clerkUser.emailAddresses[0]?.emailAddress;
-              if (emailAddress) {
-                userName = emailAddress.split("@")[0] || null;
-              }
+              userName = clerkUser.emailAddresses[0]?.emailAddress?.split("@")[0] || null;
             }
+            if (!userName) userName = "User";
 
-            // If still no name, use a default
-            if (!userName) {
-              userName = "User";
-            }
-
-            const userData: any = {
+            const userData = {
               name: userName,
               avatar_url: clerkUser.imageUrl || null,
               username: clerkUser.username || null,
             };
-
-            console.log(`Setting user data for ${userId}:`, userData);
             clerkUserMap.set(userId, userData);
-
-            // Also try to sync this user to Supabase for future requests
-            try {
-              await ensureUserExists(userId, clerkUser);
-              console.log(`User ${userId} synced to Supabase`);
-            } catch (syncError: any) {
-              // Ignore sync errors, we already have the data from Clerk
-              console.error(`Could not sync user ${userId} to Supabase:`, syncError?.message);
-            }
-
+            // Async sync (fire and forget)
+            ensureUserExists(userId, clerkUser).catch(() => { });
             return { userId, success: true };
-          } catch (clerkError: any) {
-            console.error(`Error fetching user ${userId} from Clerk:`, clerkError?.message);
-            console.error(`Full Clerk error:`, clerkError);
-            return { userId, success: false, error: clerkError };
+          } catch (e) {
+            return { userId, success: false };
           }
         });
-
         await Promise.all(clerkUserPromises);
-        console.log(`Fetched ${clerkUserMap.size} users from Clerk`);
-      } catch (error: any) {
-        console.error("Error fetching users from Clerk:", error?.message);
-        console.error("Full error:", error);
-      }
-    } else if (missingUserIds.length > 0) {
-      console.warn(`CLERK_SECRET_KEY not set, cannot fetch ${missingUserIds.length} missing users from Clerk`);
+      } catch (e) { console.error("Clerk fetch error", e); }
     }
 
-    // Combine posts with user data (prefer Supabase, fallback to Clerk)
-    const postsWithUsers = posts.map((post: any) => {
+    // Combine posts with user data AND stats
+    const postsWithStats = posts.map((post: any) => {
       const supabaseUser = userMap.get(post.user_id);
       const clerkUser = clerkUserMap.get(post.user_id);
       const user = supabaseUser || clerkUser;
 
-      // Extract user data with better fallback logic
       let userData;
       if (user) {
-        const userName = user.name ||
-          (user.firstName && user.lastName ? `${user.firstName} ${user.lastName}`.trim() : null) ||
-          user.firstName ||
-          user.lastName ||
-          user.username ||
-          null;
-
-        const avatarUrl = user.avatar_url || user.imageUrl || null;
-
         userData = {
-          name: userName || "User",
-          avatar_url: avatarUrl,
+          name: user.name || "User",
+          avatar_url: user.avatar_url || user.imageUrl || null,
           username: user.username || null,
         };
       } else {
-        userData = {
-          name: "User",
-          email: null,
-          avatar_url: null,
-        };
+        userData = { name: "User", avatar_url: null, username: null };
       }
 
       return {
         ...post,
-        user: userData
+        user: userData,
+        isLiked: likedPostIds.has(post.id),
+        isSaved: savedPostIds.has(post.id)
       };
     });
-
-    // FETCH LIKE AND SAVE STATUS FOR CURRENT USER
-    const currentUserId = (req as any).user?.sub || (req as any).user?.id || (req as any).user?.userId;
-    let postsWithStats = postsWithUsers;
-
-    if (currentUserId && postsWithUsers.length > 0) {
-      const postIds = postsWithUsers.map(p => p.id);
-
-      const [likesRes, savesRes] = await Promise.all([
-        supabase.from("likes").select("post_id").eq("user_id", currentUserId).in("post_id", postIds),
-        supabase.from("saved_posts").select("post_id").eq("user_id", currentUserId).in("post_id", postIds)
-      ]);
-
-      const likedPostIds = new Set((likesRes.data || []).map(l => l.post_id));
-      const savedPostIds = new Set((savesRes.data || []).map(s => s.post_id));
-
-      postsWithStats = postsWithUsers.map(p => ({
-        ...p,
-        isLiked: likedPostIds.has(p.id),
-        isSaved: savedPostIds.has(p.id)
-      }));
-    }
 
     return res.json({
       posts: postsWithStats,
