@@ -308,7 +308,7 @@ export default function FeedbackButton() {
         }}
         aria-label="Feedback"
       >
-        <HugeiconsIcon icon={CommentAdd02Icon} style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", backgroundColor: "#10633b", padding: "12px", borderRadius: "25px" }} />
+        <HugeiconsIcon icon={CommentAdd02Icon} style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", backgroundColor: "#fff", padding: "12px", borderRadius: "25px" }} />
       </button>
       {modal}
     </>
