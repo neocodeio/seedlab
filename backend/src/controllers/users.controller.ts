@@ -532,7 +532,7 @@ export async function getUserProfile(req: Request, res: Response) {
       id: userData.id,
       name: userData.name,
       avatar_url: userData.avatar_url,
-      banner_url: userData.banner_url || null,
+      // banner_url: userData.banner_url || null,
       bio: userData.bio || null,
       username: userData.username || null,
       follower_count: followerResult.count || 0,
@@ -540,7 +540,8 @@ export async function getUserProfile(req: Request, res: Response) {
       total_likes: totalLikes,
       pinned_post_id: userData.pinned_post_id || null,
       pinned_post: pinnedPost,
-      // Professional info
+      // Professional info - commenting out until verified in schema
+      /*
       location: userData.location || null,
       job_title: userData.job_title || null,
       skills: userData.skills || null,
@@ -552,6 +553,7 @@ export async function getUserProfile(req: Request, res: Response) {
       twitter_url: userData.twitter_url || null,
       linkedin_url: userData.linkedin_url || null,
       website_url: userData.website_url || null,
+      */
       // Metadata
       created_at: userData.created_at || null,
       updated_at: userData.updated_at || null,
@@ -642,7 +644,8 @@ export async function updateUserProfile(req: Request, res: Response) {
     if (name !== undefined) updateData.name = name;
     if (bio !== undefined) updateData.bio = bio;
     if (avatar_url !== undefined) updateData.avatar_url = avatar_url;
-    if (banner_url !== undefined) updateData.banner_url = banner_url;
+    // if (banner_url !== undefined) updateData.banner_url = banner_url;
+    /*
     if (location !== undefined) updateData.location = location;
     if (job_title !== undefined) updateData.job_title = job_title;
     if (skills !== undefined) updateData.skills = skills;
@@ -654,6 +657,7 @@ export async function updateUserProfile(req: Request, res: Response) {
     if (twitter_url !== undefined) updateData.twitter_url = twitter_url;
     if (linkedin_url !== undefined) updateData.linkedin_url = linkedin_url;
     if (website_url !== undefined) updateData.website_url = website_url;
+    */
 
     if (username && username !== currentUser?.username) {
       updateData.username = username;
@@ -691,7 +695,7 @@ export async function updateUserProfile(req: Request, res: Response) {
 
         const hasUpdates = Object.keys(updateClerkData).length > 0;
         if (hasUpdates && userId) {
-          await clerkClient.users.updateUser(userId, updateClerkData as any);
+          await (clerkClient.users as any).updateUser(userId, updateClerkData);
         }
       } catch (clerkError) {
         console.error("Error updating Clerk user:", clerkError);
